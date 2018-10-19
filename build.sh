@@ -3,9 +3,27 @@
 echo 'Did you run:'
 echo 'npm login?'
 read -p 'y/n: ' didLogin
+if [ $didLogin == 'y' || $didLogin == 'Y' || $didLogin == 'yes' || $didLogin == 'Yes' ]
+  then
+    echo npm login
+    else
+      echo Nope
+      npm login
+fi
+
 echo 'npm init --scope=<org_scope>?'
 read -p 'y/n: ' inited
 
+if [ $inited == 'y' || $inited == 'Y' || $inited == 'yes' || $inited == 'Yes' ]
+  then
+    echo Coool
+  else
+    echo Nope
+    echo 'What Org name?'
+    read orgName
+    npm init --scope=${orgName}
+fi
+# exit
 #############################################
 # Editor Config
 cat > .editorconfig <<EOL
@@ -84,6 +102,81 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--", \
             "--remote-debugging-port=9222", \
             "--user-data-dir=/data"]
 EOL
+
+#############################################
+# Circle CI
+mkdir .circleci
+touch .circleci/config.yml
+cat .circleci/config.yml <<EOL
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.11.1
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-
+    # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+      - run:
+          name: Run tests
+          command: npm test
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+
+EOL
+
+
+
 
 npm install --save-dev chai mocha nyc
 
