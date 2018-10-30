@@ -107,7 +107,7 @@ EOL
 # Circle CI
 mkdir .circleci
 touch .circleci/config.yml
-cat .circleci/config.yml <<EOL
+cat > .circleci/config.yml <<EOL
 # Javascript Node CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
