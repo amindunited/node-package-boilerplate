@@ -208,6 +208,6 @@ EOL
 
 
 
-npm install --save-dev chai mocha nyc
+npm install --save-dev chai mocha sinon nyc
 
 echo 'Cool, run npm publish --access public to publish this!'
