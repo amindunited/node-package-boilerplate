@@ -2,7 +2,7 @@ const path = require('path');
 const { exec } = require('child_process');
 const npmLogin = require('npm-cli-login');
 const writeFile = require('@amindunited/utils').fileSystem.writeFile;
-const ensure = require('@amindunited/utils').fileSystem.ensure;
+const ensure = require('@amindunited/utils').fileSystem.ensurePath;
 
 const loginDetails = { }
 
@@ -32,7 +32,7 @@ const actions = {
     'options': [],
     'fn': async (scope) => {
 
-      console.log('ecope ', scope);
+      console.log('scope ', scope);
       loginDetails.scope = scope;
     }
   },
@@ -189,7 +189,7 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=${'$NPM_TOKEN'}" > ~/repo/.npmrc
       - run:
           name: Publish package
           command: npm publish
