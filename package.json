@@ -4,11 +4,11 @@
   "description": "A script that will install libs and write files that are common to my node module projects",
   "main": "index.js",
   "bin": {
-    "node-package-boilerplate": "node ./cli.js"
+    "node-package-boilerplate": "./cli.js"
   },
   "scripts": {
     "start": "node ./index.js",
-    "node-package-boilerplate": "node ./cli.js",
+    "node-package-boilerplate": "node ./index.js",
     "test": "nyc --reporter=html mocha './src/**/*.test.js' --recursive"
   },
   "repository": {
