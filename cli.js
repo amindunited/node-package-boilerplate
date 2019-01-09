@@ -1,3 +1,2 @@
 #!/usr/bin/env node
-
-console.log('Ive run');
+const main = require(__dirname + '/index.js');
