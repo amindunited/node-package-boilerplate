@@ -1,6 +1,6 @@
 {
   "name": "@amindunited/node-package-boilerplate",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A script that will install libs and write files that are common to my node module projects",
   "main": "index.js",
   "bin": {
