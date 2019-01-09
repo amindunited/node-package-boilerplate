@@ -1,0 +1,31 @@
+{
+  "name": "@amindunited/node-package-boilerplate",
+  "version": "0.0.0",
+  "description": "A script that will install libs and write files that are common to my node module projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "nyc --reporter=html mocha './src/**/*.test.js' --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amindunited/node-package-boilerplate.git"
+  },
+  "author": "amindunited",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amindunited/node-package-boilerplate/issues"
+  },
+  "homepage": "https://github.com/amindunited/node-package-boilerplate#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "sinon": "^7.2.2"
+  },
+  "dependencies": {
+    "@amindunited/utils": "0.0.13",
+    "express": "^4.16.4",
+    "npm-cli-login": "0.0.10"
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Project Config</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html, body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: rgba(199, 199, 199, 1);
+      }
+      fieldset {
+        border: none;
+      }
+      main {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      form {
+        font-size: 18px;
+        background-color: white;
+        border-radius: 2px;
+        padding: 40px 20px;
+      }
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+  </head>
+  <body>
+    <main>
+      <h1>
+        Project Config
+      </h1>
+      <form method="post">
+        <fieldset>
+          <label for="username">NPM Username</label>
+          <input type="text" name="username" id="username" required/>
+        </fieldset>
+
+        <fieldset>
+          <label for="password">NPM Password</label>
+          <input type="password" name="password" id="password" required/>
+        </fieldset>
+
+        <fieldset>
+            <label for="email">Public Email</label>
+            <input type="email" name="email" id="email" required/>
+          </fieldset>
+
+        <fieldset>
+          <label for="npm-scope">NPM Scope</label>
+          <input type="npm-scope" name="npm-scope" id="npm-scope"/>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="login" id="login" checked=true/>
+          <label for="login">Login to NPM</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="npm-init" id="npm-init" checked=true/>
+          <label for="npm-init">NPM INIT</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="MIT" name="licence" id="licence"/>
+          <label for="licence">MIT Licence</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="editorconfig" id="editorconfig" checked=true/>
+          <label for="editorconfig">.editorconfig</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="gitignore" id="gitignore" checked=true/>
+          <label for="gitignore">.gitignore</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="nvmrc" id="nvmrc" checked=true/>
+          <label for="nvmrc">.nvmrc</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="dockerfile" id="dockerfile" checked=true/>
+          <label for="dockerfile">dockerfile</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="circleci" id="circleci" checked=true/>
+          <label for="circleci">.circleci</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" value="true" name="chai-mocha" id="chai-mocha" checked=true/>
+          <label for="chai-mocha">chai mocha sinon nyc</label>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+</html>
